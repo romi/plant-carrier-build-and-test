@@ -1,3 +1,13 @@
+.idea
+thirdparty
+*build*
+*_main.cs
+*venv*
+*~
+*_deps/*
+*librcom/libr
+*libromi/libr
+
 # Prerequisites
 *.d
 
@@ -30,3 +40,5 @@
 *.exe
 *.out
 *.app
+
+
