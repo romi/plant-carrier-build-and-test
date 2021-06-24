@@ -106,6 +106,6 @@ if((CMAKE_SYSTEM_PROCESSOR MATCHES ".*arm") OR (CMAKE_SYSTEM_PROCESSOR MATCHES "
 endif()
 
 add_subdirectory(libplantcarrier)
-add_subdirectory(applications/example)
+add_subdirectory(applications/plantcarrier)
 add_subdirectory(applications/rcdiscover)
 

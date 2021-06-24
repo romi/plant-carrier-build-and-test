@@ -8,9 +8,10 @@ set(libplantcarrier_VERSION_MINOR 1)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 set(SOURCES
-        include/IPlantCarrierDemo.h
-        include/PlantCarrierDemo.h
-        src/PlantCarrierDemo.cpp)
+        include/IPlantCarrier.h
+        include/PlantCarrier.h
+        src/PlantCarrier.cpp
+        src/Gripper.cpp)
 
 
 add_library(plantcarrier SHARED ${SOURCES})
@@ -20,7 +21,7 @@ target_include_directories(plantcarrier
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
 
-target_link_libraries(plantcarrier stdc++fs)
+target_link_libraries(plantcarrier romi romimocks stdc++fs)
 # Add dependent libs as necessary
 #target_link_libraries(plantcarrier rpp rcompp-lite romi stdc++fs)
 
