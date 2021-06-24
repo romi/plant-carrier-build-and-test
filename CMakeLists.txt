@@ -107,4 +107,5 @@ endif()
 
 add_subdirectory(libplantcarrier)
 add_subdirectory(applications/example)
+add_subdirectory(applications/rcdiscover)
 
