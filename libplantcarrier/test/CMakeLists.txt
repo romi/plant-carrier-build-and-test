@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 
-set(IMAGERSOURCES
+set(CARRIERSOURCES
         src/tests_main.cpp
-        src/PlantCarrier_tests.cpp)
+        src/PlantCarrier_tests.cpp
+        src/gripper_tests.cpp
+        )
 
 add_executable( libplantcarrier_unit_tests
-                ${IMAGERSOURCES})
+                ${CARRIERSOURCES})
 
 target_link_libraries( libplantcarrier_unit_tests
                         gtest

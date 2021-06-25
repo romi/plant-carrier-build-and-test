@@ -5,11 +5,14 @@
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
+
 namespace plant_carrier_mocks {
-        class GripperMock : public plant_carrier::IGripper {
-        public:
-            MOCK_METHOD(bool, pick_up, (), (override));
-            MOCK_METHOD(bool, put_down, (), (override));
-        };
+    class GripperMock : public plant_carrier::IGripper {
+    public:
+        MOCK_METHOD(bool, pick_up, (), (override));
+        MOCK_METHOD(bool, put_down, (), (override));
+        MOCK_METHOD(bool, homing, (), (override));
+    };
 }
+
 #pragma GCC diagnostic pop

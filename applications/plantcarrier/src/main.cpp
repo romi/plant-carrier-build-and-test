@@ -73,7 +73,7 @@ int main()
 
 //settings creation
     double xmin[] = { 0.0, 0.0, 0.0 };
-    double xmax[] = { 0.030, 0.0, 0.24 };
+    double xmax[] = { 0.03, 0.0, 0.24 };
     romi::CNCRange range(xmin, xmax);
     double vmax[] = { 0.10, 0.0, 0.00375 };
     double amax[] = { 0.40, 0.1, 0.0015 };//!!!!! Un zero entraine une division par zero!!!!! d'ou le 0.1
@@ -102,8 +102,11 @@ int main()
     plant_carrier::PlantCarrier plantcarrier(gripper);
 
 //Control begin
-    plantcarrier.gripper_.pick_up();
+    plantcarrier.gripper_.homing();
+    //plantcarrier.gripper_.pick_up();
     //plantcarrier.gripper_.put_down();
+
+
 
     //auto result = plantcarrier.demo_function(1, 2);
     //std::cout << "Result: " << result << std::endl;

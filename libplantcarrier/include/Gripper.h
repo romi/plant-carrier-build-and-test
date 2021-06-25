@@ -34,7 +34,7 @@ namespace plant_carrier
         static constexpr double kXTravelDistance = 0.02;
         static constexpr double kZTravelDistance = 0.20;
         static constexpr double kXTravelSpeed = 0.1;
-        static constexpr double kZTravelSpeed = 0.1;
+        static constexpr double kZTravelSpeed = 0.7;
 
     protected:
         romi::ICNC& cnc_;
@@ -45,6 +45,7 @@ namespace plant_carrier
         
         bool pick_up() override;
         bool put_down() override;
+        bool homing() override;
     };
 }
 

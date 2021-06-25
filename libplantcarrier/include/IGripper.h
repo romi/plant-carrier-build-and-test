@@ -33,6 +33,7 @@ namespace plant_carrier
 
         virtual bool pick_up() = 0;
         virtual bool put_down() = 0;
+        virtual bool homing() = 0;
     };
 }
 

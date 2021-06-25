@@ -33,7 +33,7 @@ namespace plant_carrier
     bool Gripper::pick_up()
     {
         bool success = false;
-        success = (cnc_.moveto(kXTravelDistance, 0, 0, kXTravelSpeed)
+        success = (cnc_.moveto(0, 0, 0, kXTravelSpeed)
                    && cnc_.moveto(0, 0, kZTravelDistance, kZTravelSpeed));
         return success;
     }
@@ -41,8 +41,14 @@ namespace plant_carrier
     bool Gripper::put_down()
     {
         bool success = false;
-        success = (cnc_.moveto(0, 0, -kZTravelDistance, kZTravelSpeed)
-                   && cnc_.moveto(-kXTravelDistance, 0, 0, kXTravelSpeed));
+        success = (cnc_.moveto(0, 0, 0, kZTravelSpeed)
+                   && cnc_.moveto(kXTravelDistance, 0, 0, kXTravelSpeed));
         return success;
     }
+
+    bool Gripper::homing()
+    {
+        return cnc_.homing();
+    }
+
 }
