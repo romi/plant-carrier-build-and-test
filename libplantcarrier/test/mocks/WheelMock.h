@@ -22,25 +22,19 @@
 
  */
 
-#include "PlantCarrier.h"
+#include "IWheel.h"
 
-namespace plant_carrier {
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
-    PlantCarrier::PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/ IWheel& wheel)
-        : gripper_(gripper), wheel_(wheel)
-    {
-    }
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Weffc++"
 
-    /*bool PlantCarrier::move_forward() {
-        bool success = false;
-        success = wheel_.moveat(1, 1, 0);
-        return success;
-    }
-
-    bool PlantCarrier::turn_around() {
-        bool success = false;
-        success = wheel_.move(5000, static_cast<int16_t>(8 * 0.29 / 0.30 * 400), static_cast<int16_t>(- 8 * 0.29 / 0.30 * 400), 0);
-        return success;
-    }*/
-
+namespace plant_carrier_mocks {
+    class WheelMock : public plant_carrier::IWheel {
+    public:
+        MOCK_METHOD(bool, move_forward, (), (override));
+    };
 }
+
+#pragma GCC diagnostic pop

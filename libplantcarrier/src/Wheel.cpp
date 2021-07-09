@@ -22,25 +22,26 @@
 
  */
 
-#include "PlantCarrier.h"
+#include "Wheel.h"
 
-namespace plant_carrier {
+plant_carrier::Wheel::Wheel(romi::ICNC &cnc) : cnc_(cnc)
+{
+    cnc_.power_up();
+}
 
-    PlantCarrier::PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/ IWheel& wheel)
-        : gripper_(gripper), wheel_(wheel)
-    {
-    }
+plant_carrier::Wheel::~Wheel()
+{
+    cnc_.power_down();
+}
 
-    /*bool PlantCarrier::move_forward() {
-        bool success = false;
-        success = wheel_.moveat(1, 1, 0);
-        return success;
-    }
+bool plant_carrier::Wheel::move_forward() {
+    bool success = false;
+    success = cnc_.moveat(1000, 1000, 0);
+    return success;
+}
 
-    bool PlantCarrier::turn_around() {
-        bool success = false;
-        success = wheel_.move(5000, static_cast<int16_t>(8 * 0.29 / 0.30 * 400), static_cast<int16_t>(- 8 * 0.29 / 0.30 * 400), 0);
-        return success;
-    }*/
-
+bool plant_carrier::Wheel::turn_around() {
+    bool success = false;
+    success = cnc_.moveto(-0.29*M_PI/2, 0.29*M_PI/2, 0, 0.2);
+    return success;
 }

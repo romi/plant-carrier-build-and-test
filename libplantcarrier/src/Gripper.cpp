@@ -25,9 +25,14 @@
 
 namespace plant_carrier
 {
-    Gripper::Gripper(romi::ICNC& cnc)
-    : cnc_(cnc)
+    Gripper::Gripper(romi::ICNC& cnc) : cnc_(cnc)
     {
+        cnc_.power_up();
+    }
+
+    Gripper::~Gripper()
+    {
+        cnc_.power_down();
     }
 
     bool Gripper::pick_up()

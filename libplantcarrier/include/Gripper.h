@@ -21,6 +21,7 @@
   <http://www.gnu.org/licenses/>.
 
  */
+
 #ifndef PLANTCARRIER_GRIPPER_H
 #define PLANTCARRIER_GRIPPER_H
 
@@ -32,16 +33,16 @@ namespace plant_carrier
     class Gripper : public IGripper {
     public:
         static constexpr double kXTravelDistance = 0.02;
-        static constexpr double kZTravelDistance = 0.20;
+        static constexpr double kZTravelDistance = 0.14;
         static constexpr double kXTravelSpeed = 0.1;
-        static constexpr double kZTravelSpeed = 0.7;
+        static constexpr double kZTravelSpeed = 0.2;
 
     protected:
         romi::ICNC& cnc_;
 
     public:
         Gripper(romi::ICNC& cnc);
-        virtual ~Gripper() override = default;
+        virtual ~Gripper() override;
         
         bool pick_up() override;
         bool put_down() override;

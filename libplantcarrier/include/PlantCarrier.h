@@ -26,16 +26,29 @@
 
 #include "IPlantCarrier.h"
 #include "IGripper.h"
+#include "IWheel.h"
+#include "StepperMotorDriver.h"
 
 namespace plant_carrier {
 
         class PlantCarrier : public IPlantCarrier {
-        public:
-            IGripper& gripper_;
 
-            PlantCarrier(IGripper& gripper);
+        protected:
+            IGripper& gripper_;
+            //romi::StepperMotorDriver& wheel_;
+            IWheel& wheel_;
+
+        public:
+            PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/IWheel& wheel);
             ~PlantCarrier() override = default;
-            int32_t demo_function(int32_t num1, int32_t num2) override;
+
+            bool move_forward() override { return wheel_.move_forward(); }
+            bool turn_around() override { return wheel_.turn_around(); }
+
+            bool pick_up() override { return gripper_.pick_up(); }
+            bool put_down() override { return gripper_.put_down(); }
+            bool homing() override { return gripper_.homing(); }
+
         };
 
 }

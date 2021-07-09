@@ -11,7 +11,12 @@ set(SOURCES
         include/IPlantCarrier.h
         include/PlantCarrier.h
         src/PlantCarrier.cpp
-        src/Gripper.cpp)
+        src/Gripper.cpp
+        src/StepperMotorDriver.cpp
+        include/StepperMotorDriver.h
+        src/Wheel.cpp
+        include/Wheel.h
+        include/IWheel.h)
 
 
 add_library(plantcarrier SHARED ${SOURCES})

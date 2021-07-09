@@ -21,6 +21,7 @@
   <http://www.gnu.org/licenses/>.
 
  */
+
 #ifndef PLANTCARRIER_IPLANTCARRIER_H
 #define PLANTCARRIER_IPLANTCARRIER_H
 
@@ -32,7 +33,13 @@ namespace plant_carrier
             IPlantCarrier() = default;
             virtual ~IPlantCarrier() = default;
 
-            virtual int32_t demo_function(int32_t num1, int32_t num2) = 0;
+            virtual bool move_forward() = 0;
+            virtual bool turn_around() = 0;
+
+            virtual bool pick_up() = 0;
+            virtual bool put_down() = 0;
+
+            virtual bool homing() = 0;
     };
 
 }

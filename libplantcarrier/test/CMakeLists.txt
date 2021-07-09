@@ -4,6 +4,7 @@ set(CARRIERSOURCES
         src/tests_main.cpp
         src/PlantCarrier_tests.cpp
         src/gripper_tests.cpp
+        src/wheel_tests.cpp
         )
 
 add_executable( libplantcarrier_unit_tests

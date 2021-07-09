@@ -22,25 +22,28 @@
 
  */
 
-#include "PlantCarrier.h"
+#ifndef PLANT_CARRIER_BUILD_AND_TEST_WHEEL_H
+#define PLANT_CARRIER_BUILD_AND_TEST_WHEEL_H
 
-namespace plant_carrier {
+#include "api/ICNC.h"
+#include "IWheel.h"
 
-    PlantCarrier::PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/ IWheel& wheel)
-        : gripper_(gripper), wheel_(wheel)
-    {
-    }
+namespace plant_carrier
+{
+    class Wheel : public IWheel {
 
-    /*bool PlantCarrier::move_forward() {
-        bool success = false;
-        success = wheel_.moveat(1, 1, 0);
-        return success;
-    }
+    protected:
+        romi::ICNC& cnc_;
 
-    bool PlantCarrier::turn_around() {
-        bool success = false;
-        success = wheel_.move(5000, static_cast<int16_t>(8 * 0.29 / 0.30 * 400), static_cast<int16_t>(- 8 * 0.29 / 0.30 * 400), 0);
-        return success;
-    }*/
+    public:
+        Wheel(romi::ICNC& cnc);
+        virtual ~Wheel() override;
 
+        bool move_forward() override;
+        bool turn_around() override;
+
+    };
 }
+
+
+#endif //PLANT_CARRIER_BUILD_AND_TEST_WHEEL_H

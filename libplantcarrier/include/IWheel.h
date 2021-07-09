@@ -22,25 +22,21 @@
 
  */
 
-#include "PlantCarrier.h"
+#ifndef PLANT_CARRIER_BUILD_AND_TEST_IWHEEL_H
+#define PLANT_CARRIER_BUILD_AND_TEST_IWHEEL_H
 
-namespace plant_carrier {
+#include <cstdint>
+namespace plant_carrier
+{
+    class IWheel {
 
-    PlantCarrier::PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/ IWheel& wheel)
-        : gripper_(gripper), wheel_(wheel)
-    {
-    }
+    public:
+        virtual ~IWheel() = default;
 
-    /*bool PlantCarrier::move_forward() {
-        bool success = false;
-        success = wheel_.moveat(1, 1, 0);
-        return success;
-    }
+        virtual bool move_forward() = 0;
+        virtual bool turn_around() = 0;
 
-    bool PlantCarrier::turn_around() {
-        bool success = false;
-        success = wheel_.move(5000, static_cast<int16_t>(8 * 0.29 / 0.30 * 400), static_cast<int16_t>(- 8 * 0.29 / 0.30 * 400), 0);
-        return success;
-    }*/
-
+    };
 }
+
+#endif //PLANT_CARRIER_BUILD_AND_TEST_IWHEEL_H
