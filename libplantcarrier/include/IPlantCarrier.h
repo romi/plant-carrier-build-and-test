@@ -33,6 +33,9 @@ namespace plant_carrier
             IPlantCarrier() = default;
             virtual ~IPlantCarrier() = default;
 
+            virtual bool power_up() = 0;
+            virtual bool power_down() = 0;
+
             virtual bool move_forward() = 0;
             virtual bool turn_around() = 0;
 

@@ -31,6 +31,9 @@ namespace plant_carrier
     public:
         virtual ~IGripper() = default;
 
+        virtual bool power_up() = 0;
+        virtual bool power_down() = 0;
+
         virtual bool pick_up() = 0;
         virtual bool put_down() = 0;
         virtual bool homing() = 0;

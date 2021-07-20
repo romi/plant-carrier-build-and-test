@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <PlantCarrier.h>
 #include <RSerial.h>
 #include <RomiSerialClient.h>
@@ -13,13 +14,16 @@
 #include <Linux.h>
 #include <Gripper.h>
 #include <rover/NavigationSettings.h>
-//#include "StepperMotorDriver.h"
 #include "Wheel.h"
 #include "rover/LocationTracker.h"
 #include "rover/WheelOdometry.h"
 #include "rover/ZeroNavigationController.h"
 #include "rover/Navigation.h"
-
+#include "camera/USBCamera.h"
+#include "cv/ImageIO.h"
+//#include "PlantCarrierStateMachine.h"
+//#include "picamera/PiCameraSettings.h"
+//#include "picamera/PiCamera.h"
 
 #include <mock_session.h>
 #include <camera/FileCamera.h>
@@ -28,7 +32,7 @@
 
 int main()
 {
-
+/*
 //Controllers creation
     const std::string pincer("/dev/ttyACM2");
     const std::string wheels("/dev/ttyACM1");
@@ -94,12 +98,12 @@ int main()
     romi::ZeroNavigationController nav_controller;
 
     romi::Navigation navigation (nav_settings,driver,distance_measure,distance_measure,nav_controller,session); //Parfois il faut reset les ports
-                    //2fois de suite la meme vitesse
 
-//Camera test
-    romi::FileCamera camera("/dev/video0");
-    romi::Image image;
-    camera.grab(image);
+    plant_carrier::PlantCarrier plant_carrier(gripper,navigation);
+    plant_carrier.power_up();
+
+//    plant_carrier::PlantCarrierStateMachine plant_carrier_SM (plant_carrier);
+
 
 //Control begin
 //    plant_carrier.homing();
@@ -108,11 +112,35 @@ int main()
 //    plant_carrier.move_forward();
 //    plant_carrier.turn_around();
 
-    navigation.move(1,0.5);
-//    char c;
-//    std::cin>>c;
-//    navigation.stop();
-//    sleep(5);
+//    navigation.move(1,0.5);
+
+*/
+/*
+    romi::USBCamera camera0 ("/dev/video0",640,480);
+
+    romi::Image image0;
+
+    camera0.grab(image0);
+    romi::ImageIO::store_jpg(image0, "/home/nicolasbranas/Desktop/image.jpg");
+    romi::ImageIO::store_png(image0, "/home/nicolasbranas/Desktop/image.png"); //pas de rouge?
+*/
+   /* auto start = std::chrono::system_clock::now();
+    try {
+        romi::V2CameraSettings settings(640, 480);
+        romi::PiCamera camera(settings);
+        romi::Image image;
+        for (int i = 0; i < 60; i++) {
+            camera.grab(image);
+            r_debug("image %d", i);
+        }
+    } catch (std::exception& e) {
+        r_err("Caught exception: %s", e.what());
+    }
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = end - start;
+    std::cout << elapsed.count() << '\n';*/
+
+//ImageIO jpg:photo, png: sans perte (masques)
 
     return 0;
 }

@@ -8,23 +8,33 @@ set(libplantcarrier_VERSION_MINOR 1)
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 set(SOURCES
-        include/IPlantCarrier.h
-        include/PlantCarrier.h
-        src/PlantCarrier.cpp
-        src/Gripper.cpp
-        src/StepperMotorDriver.cpp
-        include/StepperMotorDriver.h
-        src/Wheel.cpp
-        include/Wheel.h
-        include/IWheel.h)
+    include/Gripper.h
+    include/IGripper.h
+    include/IPlantCarrier.h
+    include/IPlantCarrierDemo.h
+    include/IScanner.h
+    include/IWheel.h
+    include/PlantCarrier.h
+    include/PlantCarrierDemo.h
+    include/PlantCarrierStateMachine.h
+    include/Scanner.h
+    include/StepperMotorDriver.h
+    include/Wheel.h
+    src/Gripper.cpp
+    src/PlantCarrier.cpp
+    src/PlantCarrierDemo.cpp
+    src/PlantCarrierStateMachine.cpp
+    src/Scanner.cpp
+    src/StepperMotorDriver.cpp
+    src/Wheel.cpp include/IWorkSession.h include/WorkSession.cpp include/WorkSession.h)
 
 
 add_library(plantcarrier SHARED ${SOURCES})
 
 target_include_directories(plantcarrier
-        PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
-        )
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    )
 
 target_link_libraries(plantcarrier romi romimocks stdc++fs)
 # Add dependent libs as necessary

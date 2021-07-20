@@ -34,13 +34,11 @@ namespace romi {
     StepperMotorDriver::StepperMotorDriver(romi::StepperController& controller)
                                             : controller_(controller)
     {
-        controller_.enable();
+        //controller_.enable();
     }
 
-    StepperMotorDriver::~StepperMotorDriver()
-    {
-        controller_.disable();
-    }
+    //StepperMotorDriver::~StepperMotorDriver(){}
+
 
     bool StepperMotorDriver::moveat(double gauche, double droite){
         std::cout<<"gauche = "<<gauche<<std::endl;
@@ -86,6 +84,14 @@ namespace romi {
 
     bool StepperMotorDriver::move(int16_t millis, int16_t steps_x, int16_t steps_y, int16_t steps_z) {
         return controller_.move(millis, steps_x, steps_y, steps_z);
+    }
+
+    bool StepperMotorDriver::disable_controller() {
+        return controller_.disable();
+    }
+
+    bool StepperMotorDriver::enable_controller() {
+        return controller_.enable();;
     }
 
 }

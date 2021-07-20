@@ -43,6 +43,9 @@ namespace plant_carrier
     public:
         Gripper(romi::ICNC& cnc);
         virtual ~Gripper() override;
+
+        bool power_up() override;
+        bool power_down() override;
         
         bool pick_up() override;
         bool put_down() override;

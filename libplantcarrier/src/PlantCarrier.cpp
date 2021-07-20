@@ -26,9 +26,19 @@
 
 namespace plant_carrier {
 
-    PlantCarrier::PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/ IWheel& wheel)
-        : gripper_(gripper), wheel_(wheel)
+    PlantCarrier::PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver& IWheel& wheel*/ romi::INavigation& navigation)
+        : gripper_(gripper), /*wheel_(wheel)*/navigation_(navigation)
     {
+    }
+
+    bool PlantCarrier::power_up()
+    {
+        return navigation_.enable_controller() && gripper_.power_up();
+    }
+
+    bool PlantCarrier::power_down()
+    {
+        return navigation_.enable_controller() && gripper_.power_down();
     }
 
     /*bool PlantCarrier::move_forward() {

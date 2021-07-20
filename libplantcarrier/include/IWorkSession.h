@@ -1,0 +1,13 @@
+//
+// Created by nicolasbranas on 15/07/2021.
+//
+
+#ifndef PLANT_CARRIER_BUILD_AND_TEST_IWORKSESSION_H
+#define PLANT_CARRIER_BUILD_AND_TEST_IWORKSESSION_H
+
+class IWorkSession  {
+public:
+
+};
+
+#endif //PLANT_CARRIER_BUILD_AND_TEST_IWORKSESSION_H

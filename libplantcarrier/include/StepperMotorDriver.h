@@ -46,7 +46,10 @@ namespace romi {
         public:
 
             StepperMotorDriver(romi::StepperController& controller);
-            ~StepperMotorDriver() override;
+            ~StepperMotorDriver() override = default;
+
+            bool disable_controller() override;
+            bool enable_controller() override;
 
             bool moveat(double x_speed, double y_speed, double z_speed);
             bool moveat(double gauche, double droite) override;

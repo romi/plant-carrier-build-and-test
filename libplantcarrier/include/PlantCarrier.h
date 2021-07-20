@@ -28,6 +28,7 @@
 #include "IGripper.h"
 #include "IWheel.h"
 #include "StepperMotorDriver.h"
+#include "api/INavigation.h"
 
 namespace plant_carrier {
 
@@ -36,14 +37,18 @@ namespace plant_carrier {
         protected:
             IGripper& gripper_;
             //romi::StepperMotorDriver& wheel_;
-            IWheel& wheel_;
+            //IWheel& wheel_;
+            romi::INavigation& navigation_;
 
         public:
-            PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver&*/IWheel& wheel);
+            PlantCarrier(IGripper& gripper, /*romi::StepperMotorDriver& IWheel& wheel*/romi::INavigation& navigation);
             ~PlantCarrier() override = default;
 
-            bool move_forward() override { return wheel_.move_forward(); }
-            bool turn_around() override { return wheel_.turn_around(); }
+            bool power_up() override;
+            bool power_down() override;
+
+            bool move_forward() override { return navigation_.moveat(1,1)/*wheel_.move_forward()*/; }
+            bool turn_around() override { return false /*wheel_.turn_around()*/; }
 
             bool pick_up() override { return gripper_.pick_up(); }
             bool put_down() override { return gripper_.put_down(); }
